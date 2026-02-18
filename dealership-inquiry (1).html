@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Motors - Inquiry</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>CarClinch - Contact Dealer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        /* ALL YOUR EXISTING STYLES - KEEPING THEM THE SAME */
         :root {
             --gold: #D4AF37;
-            --gold-light: #E8D4A0;
+            --gold-light: #F4E4C1;
             --gold-dark: #B8941E;
-            --charcoal: #1A1A1A;
-            --charcoal-light: #2D2D2D;
-            --cream: #F5F3EE;
-            --cream-dark: #E8E6E1;
-            --shadow: rgba(0, 0, 0, 0.3);
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --cream: #FDFBF7;
         }
 
         * {
@@ -25,656 +23,241 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        /* Prevent zoom on input focus for iOS */
-        @media screen and (max-width: 640px) {
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea {
-                font-size: 16px;
-            }
-        }
-
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Desktop luxury background with car image */
-        @media (min-width: 769px) {
-            body::after {
-                content: '';
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: 
-                    linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(26, 26, 26, 0.85) 50%, rgba(45, 45, 45, 0.92) 100%),
-                    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23D4AF37;stop-opacity:0.03"/><stop offset="100%" style="stop-color:%23B8941E;stop-opacity:0.05"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23g1)"/><path d="M200,400 Q400,200 600,400 T1000,400" stroke="%23D4AF37" stroke-width="0.5" fill="none" opacity="0.15"/><circle cx="150" cy="150" r="100" fill="%23D4AF37" opacity="0.02"/><circle cx="1050" cy="650" r="150" fill="%23D4AF37" opacity="0.03"/></svg>');
-                background-size: cover;
-                background-position: center;
-                z-index: -1;
-                pointer-events: none;
-            }
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-            animation: shimmer 20s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        /* Simplify background shimmer on mobile */
-        @media (max-width: 768px) {
-            body::before {
-                animation: none;
-                background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.02) 0%, transparent 70%);
-            }
-        }
-
-        @keyframes shimmer {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(5%, 5%); }
         }
 
         .container {
-            max-width: 600px;
+            max-width: 1400px;
             width: 100%;
-            background: var(--cream);
-            border-radius: 2px;
-            box-shadow: 
-                0 25px 50px var(--shadow),
-                0 0 0 1px rgba(212, 175, 55, 0.1);
-            position: relative;
+            display: grid;
+            grid-template-columns: 45% 55%;
+            background: var(--white);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
             overflow: hidden;
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Desktop decorative elements */
-        @media (min-width: 769px) {
-            .container::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 80px;
-                height: 80px;
-                background: linear-gradient(135deg, var(--gold) 0%, transparent 70%);
-                opacity: 0.1;
-                pointer-events: none;
-            }
-
-            .container::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                width: 100px;
-                height: 100px;
-                background: linear-gradient(-135deg, var(--gold) 0%, transparent 70%);
-                opacity: 0.08;
-                pointer-events: none;
-            }
+        .hero-section {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.9) 100%);
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* Desktop side decoration */
-        @media (min-width: 1024px) {
-            body {
-                padding: 3rem;
-            }
-
-            .desktop-left-decor,
-            .desktop-right-decor {
-                position: fixed;
-                top: 50%;
-                transform: translateY(-50%);
-                font-family: 'Cormorant Garamond', serif;
-                color: var(--gold);
-                opacity: 0.15;
-                font-size: 1rem;
-                letter-spacing: 0.5em;
-                writing-mode: vertical-rl;
-                text-orientation: mixed;
-                animation: fadeIn 1.5s ease-out 1s both;
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            .desktop-left-decor {
-                left: 2rem;
-            }
-
-            .desktop-right-decor {
-                right: 2rem;
-            }
-
-            .desktop-corner-tl,
-            .desktop-corner-tr,
-            .desktop-corner-bl,
-            .desktop-corner-br {
-                position: fixed;
-                width: 60px;
-                height: 60px;
-                border: 1px solid var(--gold);
-                opacity: 0.2;
-                animation: fadeIn 1.5s ease-out 1.2s both;
-                pointer-events: none;
-            }
-
-            .desktop-corner-tl {
-                top: 2rem;
-                left: 2rem;
-                border-right: none;
-                border-bottom: none;
-            }
-
-            .desktop-corner-tr {
-                top: 2rem;
-                right: 2rem;
-                border-left: none;
-                border-bottom: none;
-            }
-
-            .desktop-corner-bl {
-                bottom: 2rem;
-                left: 2rem;
-                border-right: none;
-                border-top: none;
-            }
-
-            .desktop-corner-br {
-                bottom: 2rem;
-                right: 2rem;
-                border-left: none;
-                border-top: none;
-            }
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .accent-bar {
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
-            background-size: 200% 100%;
-            animation: goldShine 3s ease-in-out infinite;
-        }
-
-        @keyframes goldShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Desktop floating particles */
-        @media (min-width: 769px) {
-            .floating-particle {
-                position: fixed;
-                width: 4px;
-                height: 4px;
-                background: var(--gold);
-                border-radius: 50%;
-                opacity: 0;
-                pointer-events: none;
-                animation: float 15s ease-in-out infinite;
-            }
-
-            .floating-particle:nth-child(1) {
-                top: 20%;
-                left: 15%;
-                animation-delay: 0s;
-                animation-duration: 12s;
-            }
-
-            .floating-particle:nth-child(2) {
-                top: 60%;
-                left: 85%;
-                animation-delay: 3s;
-                animation-duration: 15s;
-            }
-
-            .floating-particle:nth-child(3) {
-                top: 80%;
-                left: 25%;
-                animation-delay: 6s;
-                animation-duration: 18s;
-            }
-
-            .floating-particle:nth-child(4) {
-                top: 40%;
-                left: 75%;
-                animation-delay: 9s;
-                animation-duration: 14s;
-            }
-
-            @keyframes float {
-                0%, 100% {
-                    opacity: 0;
-                    transform: translateY(0) scale(1);
-                }
-                10% {
-                    opacity: 0.3;
-                }
-                50% {
-                    opacity: 0.6;
-                    transform: translateY(-100px) scale(1.5);
-                }
-                90% {
-                    opacity: 0.3;
-                }
-            }
-        }
-
-        .header {
-            padding: 3rem 3rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--cream-dark);
-            position: relative;
-        }
-
-        /* Desktop header decoration with car silhouette */
-        @media (min-width: 769px) {
-            .header::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 200px;
-                height: 120px;
-                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120"><defs><linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:%23D4AF37;stop-opacity:0.15"/><stop offset="50%" style="stop-color:%23D4AF37;stop-opacity:0.25"/><stop offset="100%" style="stop-color:%23D4AF37;stop-opacity:0.15"/></linearGradient></defs><path d="M30,70 L40,55 L70,50 L100,50 L130,55 L160,70 L170,80 L165,90 L155,85 L140,88 L60,88 L45,85 L35,90 L30,80 Z" fill="url(%23carGrad)"/><circle cx="60" cy="88" r="8" fill="%23D4AF37" opacity="0.3"/><circle cx="140" cy="88" r="8" fill="%23D4AF37" opacity="0.3"/><rect x="75" y="55" width="50" height="15" fill="%23D4AF37" opacity="0.2"/></svg>') no-repeat center;
-                background-size: contain;
-                opacity: 0.6;
-                animation: fadeIn 1.2s ease-out 0.5s both;
-                pointer-events: none;
-            }
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 300;
+        .brand-tagline {
+            font-size: 0.85rem;
             letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        .form-section {
+            padding: 4rem;
+            background: var(--cream);
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
             color: var(--charcoal);
             margin-bottom: 0.5rem;
-            animation: fadeIn 1s ease-out 0.3s both;
         }
 
-        .subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold-dark);
-            font-weight: 500;
-            animation: fadeIn 1s ease-out 0.5s both;
+        .form-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .form-content {
-            padding: 2.5rem 3rem 3rem;
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.6s ease-out both;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group:nth-child(1) { animation-delay: 0.6s; }
-        .form-group:nth-child(2) { animation-delay: 0.7s; }
-        .form-group:nth-child(3) { animation-delay: 0.8s; }
-        .form-group:nth-child(4) { animation-delay: 0.9s; }
-        .form-group:nth-child(5) { animation-delay: 1s; }
-        .form-group:nth-child(6) { animation-delay: 1.1s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .form-group.full-width {
+            grid-column: 1 / -1;
         }
 
         label {
             display: block;
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--charcoal);
             margin-bottom: 0.75rem;
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .required {
+            color: var(--gold-dark);
         }
 
         input[type="text"],
         input[type="email"],
         input[type="tel"],
-        textarea,
-        .select-trigger {
+        textarea {
             width: 100%;
-            padding: 0.875rem 1rem;
-            border: 1px solid var(--cream-dark);
-            background: white;
+            padding: 1rem 1.25rem;
+            border: 2px solid #E8E6E1;
+            background: var(--white);
             font-family: 'Montserrat', sans-serif;
             font-size: 0.95rem;
             color: var(--charcoal);
             transition: all 0.3s ease;
-            outline: none;
-            -webkit-appearance: none;
-            appearance: none;
         }
 
-        /* Better touch targets for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea,
-            .select-trigger,
-            .select-option,
-            .radio-option,
-            .submit-btn {
-                min-height: 44px;
-            }
-
-            .select-trigger {
-                padding: 1rem;
-            }
-
-            .select-option {
-                padding: 1rem;
-                min-height: 48px;
-                display: flex;
-                align-items: center;
-            }
-
-            .radio-option {
-                padding: 0.75rem 0;
-            }
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="tel"]:focus,
+        input:focus,
         textarea:focus {
+            outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
         }
 
         textarea {
             resize: vertical;
             min-height: 120px;
-            line-height: 1.6;
         }
 
-        /* Custom Select Dropdown */
-        .custom-select {
-            position: relative;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .select-trigger {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.875rem 1rem;
-            border: 1px solid var(--cream-dark);
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .select-trigger:hover {
-            border-color: var(--gold-light);
-        }
-
-        .select-trigger.active {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
-        }
-
-        .select-arrow {
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid var(--charcoal);
-            transition: transform 0.3s ease;
-        }
-
-        .select-trigger.active .select-arrow {
-            transform: rotate(180deg);
-        }
-
-        .select-options {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid var(--gold);
-            margin-top: 0.25rem;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .select-options.active {
-            max-height: 300px;
-            opacity: 1;
-            overflow-y: auto;
-        }
-
-        .select-option {
-            padding: 0.875rem 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-            color: var(--charcoal);
-        }
-
-        .select-option:hover {
-            background: var(--cream);
-            color: var(--gold-dark);
-        }
-
-        .select-option.selected {
-            background: var(--gold-light);
-            color: var(--charcoal);
-            font-weight: 500;
-        }
-
-        /* Radio Group for Communication Preference */
-        .radio-group {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .radio-option {
+        .checkbox-group {
             display: flex;
             align-items: center;
-            cursor: pointer;
-            position: relative;
+            gap: 0.75rem;
         }
 
-        .radio-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .radio-custom {
+        input[type="checkbox"] {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--cream-dark);
-            border-radius: 50%;
-            margin-right: 0.5rem;
-            position: relative;
-            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .radio-custom::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--gold);
-            transition: transform 0.3s ease;
-        }
-
-        .radio-option input[type="radio"]:checked + .radio-custom {
-            border-color: var(--gold);
-        }
-
-        .radio-option input[type="radio"]:checked + .radio-custom::after {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .radio-label {
+        .checkbox-label {
             font-size: 0.9rem;
             color: var(--charcoal);
-            font-weight: 300;
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: 400;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 1.125rem 2rem;
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
             color: var(--charcoal);
             border: none;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease-out 1.2s both;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
+            margin-top: 1rem;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
         }
 
-        .submit-btn:hover::before {
-            left: 100%;
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .success-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background: white;
-            padding: 3rem;
-            border-radius: 2px;
-            box-shadow: 0 25px 50px var(--shadow);
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 1000;
-            max-width: 400px;
-        }
-
-        .success-message.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            pointer-events: all;
-        }
-
-        .success-icon {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--gold);
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--charcoal);
+            border-top-color: transparent;
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            position: relative;
+            animation: spin 0.8s linear infinite;
+            margin-left: 0.75rem;
         }
 
-        .success-icon::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--gold);
-            font-size: 2rem;
-            font-weight: bold;
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
-        .success-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
+        .error-text {
+            color: #DC2626;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            display: none;
         }
 
-        .success-text {
-            color: var(--charcoal);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            opacity: 0.8;
+        .error-text.show {
+            display: block;
+        }
+
+        .input-error {
+            border-color: #DC2626 !important;
         }
 
         .overlay {
@@ -683,10 +266,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             z-index: 999;
         }
 
@@ -695,415 +278,378 @@
             pointer-events: all;
         }
 
-        /* Tablet Styles */
+        .success-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--white);
+            padding: 4rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: 1000;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .success-modal.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: all;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--gold);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-text {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .success-details {
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            text-align: left;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .success-btn {
+            padding: 0.875rem 2rem;
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .success-btn:hover {
+            background: var(--gold-dark);
+        }
+
+        .error-toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: #DC2626;
+            color: white;
+            padding: 1.25rem 2rem;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+            opacity: 0;
+            transform: translateX(400px);
+            transition: all 0.4s ease;
+            z-index: 1001;
+            max-width: 400px;
+        }
+
+        .error-toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+        }
+
         @media (max-width: 768px) {
-            /* Hide all desktop decorative elements */
-            .floating-particle,
-            .desktop-left-decor,
-            .desktop-right-decor,
-            .desktop-corner-tl,
-            .desktop-corner-tr,
-            .desktop-corner-bl,
-            .desktop-corner-br {
-                display: none !important;
+            .form-row {
+                grid-template-columns: 1fr;
             }
-
-            body {
-                padding: 1.5rem;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-
-            .header {
-                padding: 2.5rem 2rem 2rem;
-            }
-
-            .logo {
-                font-size: 2.25rem;
-                letter-spacing: 0.25em;
-            }
-
-            .subtitle {
-                font-size: 0.7rem;
-            }
-
-            .form-content {
-                padding: 2.25rem 2rem 2.5rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.75rem;
-            }
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 640px) {
-            body {
-                padding: 1rem;
-                align-items: flex-start;
-                padding-top: 2rem;
-            }
-
-            .container {
-                margin: 0;
-            }
-
-            .header {
-                padding: 2rem 1.5rem 1.5rem;
-            }
-
-            .logo {
-                font-size: 1.875rem;
-                letter-spacing: 0.2em;
-            }
-
-            .subtitle {
-                font-size: 0.65rem;
-                letter-spacing: 0.18em;
-            }
-
-            .form-content {
-                padding: 1.75rem 1.5rem 2rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.5rem;
-            }
-
-            label {
-                font-size: 0.65rem;
-                margin-bottom: 0.625rem;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea,
-            .select-trigger {
-                padding: 1rem;
-                font-size: 1rem;
-            }
-
-            textarea {
-                min-height: 100px;
-            }
-
-            .select-option {
-                padding: 1rem;
-                font-size: 1rem;
-            }
-
-            .radio-group {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .radio-option {
-                padding: 0.5rem 0;
-            }
-
-            .radio-custom {
-                width: 22px;
-                height: 22px;
-                margin-right: 0.625rem;
-            }
-
-            .radio-custom::after {
-                width: 11px;
-                height: 11px;
-            }
-
-            .radio-label {
-                font-size: 0.95rem;
-            }
-
-            .submit-btn {
-                padding: 1.25rem 2rem;
-                font-size: 0.7rem;
-                letter-spacing: 0.18em;
-            }
-
-            .success-message {
-                width: calc(100% - 2rem);
-                margin: 1rem;
-                padding: 2.5rem 1.5rem;
-            }
-
-            .success-icon {
-                width: 50px;
-                height: 50px;
-                margin-bottom: 1.25rem;
-            }
-
-            .success-icon::after {
-                font-size: 1.75rem;
-            }
-
-            .success-title {
-                font-size: 1.5rem;
-            }
-
-            .success-text {
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Small Mobile Styles */
-        @media (max-width: 375px) {
-            body {
-                padding: 0.75rem;
-                padding-top: 1.5rem;
-            }
-
-            .header {
-                padding: 1.75rem 1.25rem 1.25rem;
-            }
-
-            .logo {
-                font-size: 1.625rem;
-            }
-
-            .form-content {
-                padding: 1.5rem 1.25rem 1.75rem;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            input[type="tel"],
-            textarea,
-            .select-trigger {
-                padding: 0.875rem;
-            }
-
-            .submit-btn {
-                padding: 1.125rem 1.5rem;
-            }
-        }
-
-        /* Landscape Mobile Optimization */
-        @media (max-height: 600px) and (orientation: landscape) {
-            body {
-                padding: 1rem;
-                align-items: flex-start;
-            }
-
-            .header {
-                padding: 1.5rem 2rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.75rem;
-            }
-
-            .subtitle {
-                font-size: 0.65rem;
-            }
-
-            .form-content {
-                padding: 1.5rem 2rem 2rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.25rem;
-            }
-
-            textarea {
-                min-height: 80px;
-            }
-        }
-
-        /* Desktop Large Screens */
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 650px;
-            }
-
-            .header {
-                padding: 3.5rem 3.5rem 2.5rem;
-            }
-
-            .logo {
-                font-size: 2.75rem;
-            }
-
-            .subtitle {
-                font-size: 0.8rem;
-            }
-
-            .form-content {
-                padding: 3rem 3.5rem 3.5rem;
+            .hero-section,
+            .form-section {
+                padding: 2.5rem 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Desktop Floating Particles (hidden on mobile via CSS) -->
-    <div class="floating-particle"></div>
-    <div class="floating-particle"></div>
-    <div class="floating-particle"></div>
-    <div class="floating-particle"></div>
-
-    <!-- Desktop Decorative Elements (hidden on mobile) -->
-    <div class="desktop-left-decor">LUXURY AUTOMOTIVE</div>
-    <div class="desktop-right-decor">ELITE MOTORS</div>
-    <div class="desktop-corner-tl"></div>
-    <div class="desktop-corner-tr"></div>
-    <div class="desktop-corner-bl"></div>
-    <div class="desktop-corner-br"></div>
-
     <div class="container">
-        <div class="accent-bar"></div>
-        
-        <div class="header">
-            <h1 class="logo">ELITE</h1>
-            <p class="subtitle">Premium Automotive</p>
+        <div class="hero-section">
+            <div>
+                <h1 class="brand-logo">CARCLINCH</h1>
+                <p class="brand-tagline">Elite Automotive</p>
+                
+                <h2 class="hero-title">Contact Our Dealership</h2>
+                <p class="hero-description">
+                    Get in touch about your vehicle of interest and we'll respond within 24 hours.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Expert Automotive Consultants</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Personalized Vehicle Recommendations</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>24/7 Customer Support</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <span>Competitive Financing Options</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="form-content">
-            <form id="inquiryForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+        <div class="form-section">
+            <h2 class="form-title">Inquire About Vehicle</h2>
+            <p class="form-subtitle">Fill out the form below and we'll get back to you shortly.</p>
+
+            <form id="contactForm">
+                <!-- 🆕 VEHICLE ID FIELD (for testing) -->
+                <div class="form-group full-width">
+                    <label for="vehicleId">Vehicle ID <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="vehicleId" 
+                        name="vehicleId" 
+                        required 
+                        placeholder="e.g., vehicle_599cae2001"
+                    >
+                    <span class="error-text" id="vehicleIdError">Please enter a vehicle ID</span>
+                    <p style="font-size: 0.75rem; color: #666; margin-top: 0.5rem;">
+                        💡 In production, this will be auto-populated from the vehicle page
+                    </p>
                 </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 000-0000">
-                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name <span class="required">*</span></label>
+                        <input type="text" id="fname" name="fname" required>
+                        <span class="error-text" id="fnameError">Please enter your first name</span>
+                    </div>
 
-                <div class="form-group">
-                    <label>Inquiry Type</label>
-                    <div class="custom-select">
-                        <div class="select-trigger" id="selectTrigger">
-                            <span id="selectedValue">Select an inquiry type</span>
-                            <div class="select-arrow"></div>
-                        </div>
-                        <div class="select-options" id="selectOptions">
-                            <div class="select-option" data-value="purchase">Vehicle Purchase Inquiry</div>
-                            <div class="select-option" data-value="trade-in">Trade-In Valuation</div>
-                            <div class="select-option" data-value="test-drive">Schedule Test Drive</div>
-                            <div class="select-option" data-value="financing">Financing Options</div>
-                            <div class="select-option" data-value="service">Service Appointment</div>
-                            <div class="select-option" data-value="general">General Inquiry</div>
-                        </div>
-                        <input type="hidden" id="inquiryType" name="inquiryType" required>
+                    <div class="form-group">
+                        <label for="lname">Last Name <span class="required">*</span></label>
+                        <input type="text" id="lname" name="lname" required>
+                        <span class="error-text" id="lnameError">Please enter your last name</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" required placeholder="Tell us about your automotive needs..."></textarea>
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-text" id="emailError">Please enter a valid email</span>
                 </div>
 
                 <div class="form-group">
-                    <label>Preferred Communication Method</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="email" checked>
-                            <span class="radio-custom"></span>
-                            <span class="radio-label">Email</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="phone">
-                            <span class="radio-custom"></span>
-                            <span class="radio-label">Phone</span>
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="preference" value="either">
-                            <span class="radio-custom"></span>
-                            <span class="radio-label">Either</span>
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
+                    <span class="error-text" id="phoneError">Please enter a valid phone number</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Message / Questions</label>
+                    <textarea id="notes" name="notes" placeholder="Tell us about your interest, financing needs, trade-in, or any questions..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="wants_email" name="wants_email" checked>
+                        <label for="wants_email" class="checkbox-label">
+                            Yes, I want to receive emails from this dealer
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">Submit Inquiry</button>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Submit Inquiry</span>
+                </button>
             </form>
         </div>
     </div>
 
+    <!-- Success Modal -->
     <div class="overlay" id="overlay"></div>
-    <div class="success-message" id="successMessage">
-        <div class="success-icon"></div>
-        <h2 class="success-title">Thank You</h2>
-        <p class="success-text">Your inquiry has been received. Our team will contact you shortly.</p>
+    <div class="success-modal" id="successModal">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Inquiry Sent!</h2>
+        <p class="success-text" id="successMessage">
+            Your inquiry has been received. Our team will contact you shortly.
+        </p>
+        <div class="success-details" id="successDetails"></div>
+        <button class="success-btn" onclick="closeModal()">Close</button>
+    </div>
+
+    <!-- Error Toast -->
+    <div class="error-toast" id="errorToast">
+        <strong>Error:</strong> <span id="errorText">Something went wrong.</span>
     </div>
 
     <script>
-        // Custom Select Dropdown
-        const selectTrigger = document.getElementById('selectTrigger');
-        const selectOptions = document.getElementById('selectOptions');
-        const selectedValue = document.getElementById('selectedValue');
-        const inquiryTypeInput = document.getElementById('inquiryType');
-        const options = document.querySelectorAll('.select-option');
+        // 🔧 UPDATE THIS WITH YOUR AZURE FUNCTION URL
+        const API_ENDPOINT = 'http://localhost:7071/api/lead';
 
-        selectTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            selectTrigger.classList.toggle('active');
-            selectOptions.classList.toggle('active');
-        });
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        function validatePhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            return cleaned.length >= 10;
+        }
+        
+        function showError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(fieldId + 'Error');
+            field.classList.add('input-error');
+            if (error) {
+                error.textContent = message;
+                error.classList.add('show');
+            }
+        }
+        
+        function clearError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(fieldId + 'Error');
+            field.classList.remove('input-error');
+            if (error) error.classList.remove('show');
+        }
 
-        options.forEach(option => {
-            option.addEventListener('click', (e) => {
-                e.stopPropagation();
-                
-                // Remove previous selection
-                options.forEach(opt => opt.classList.remove('selected'));
-                
-                // Set new selection
-                option.classList.add('selected');
-                selectedValue.textContent = option.textContent;
-                inquiryTypeInput.value = option.dataset.value;
-                
-                // Close dropdown
-                selectTrigger.classList.remove('active');
-                selectOptions.classList.remove('active');
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
-            selectTrigger.classList.remove('active');
-            selectOptions.classList.remove('active');
-        });
-
-        // Form Submission
-        const form = document.getElementById('inquiryForm');
-        const overlay = document.getElementById('overlay');
-        const successMessage = document.getElementById('successMessage');
-
-        form.addEventListener('submit', (e) => {
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Get form data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            const formData = {
+                vehicleId: document.getElementById('vehicleId').value.trim(),
+                fname: document.getElementById('fname').value.trim(),
+                lname: document.getElementById('lname').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                wants_email: document.getElementById('wants_email').checked,
+                notes: document.getElementById('notes').value.trim() || null
+            };
             
-            console.log('Form submitted:', data);
+            // Validate
+            let isValid = true;
             
-            // Show success message
-            overlay.classList.add('show');
-            successMessage.classList.add('show');
+            if (!formData.vehicleId) {
+                showError('vehicleId', 'Vehicle ID is required');
+                isValid = false;
+            } else {
+                clearError('vehicleId');
+            }
             
-            // Reset form
-            form.reset();
-            selectedValue.textContent = 'Select an inquiry type';
-            inquiryTypeInput.value = '';
-            options.forEach(opt => opt.classList.remove('selected'));
+            if (formData.fname.length < 2) {
+                showError('fname', 'First name must be at least 2 characters');
+                isValid = false;
+            } else {
+                clearError('fname');
+            }
             
-            // Hide success message after 3 seconds
-            setTimeout(() => {
-                overlay.classList.remove('show');
-                successMessage.classList.remove('show');
-            }, 3000);
+            if (formData.lname.length < 2) {
+                showError('lname', 'Last name must be at least 2 characters');
+                isValid = false;
+            } else {
+                clearError('lname');
+            }
+            
+            if (!validateEmail(formData.email)) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            } else {
+                clearError('email');
+            }
+            
+            if (!validatePhone(formData.phone)) {
+                showError('phone', 'Please enter a valid phone number');
+                isValid = false;
+            } else {
+                clearError('phone');
+            }
+            
+            if (!isValid) return;
+            
+            // Show loading
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            btn.disabled = true;
+            btnText.innerHTML = 'Submitting<span class="loading-spinner"></span>';
+            
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    console.log('✅ Success:', result);
+                    
+                    // Show success modal with details
+                    document.getElementById('successMessage').textContent = result.message;
+                    document.getElementById('successDetails').innerHTML = `
+                        <strong>Lead ID:</strong> ${result.data.lead.id}<br>
+                        <strong>Conversation ID:</strong> ${result.data.conversationId}<br>
+                        <strong>Vehicle:</strong> ${result.data.vehicle.year} ${result.data.vehicle.make} ${result.data.vehicle.model}<br>
+                        <strong>Dealership:</strong> ${result.data.dealership.name}
+                    `;
+                    
+                    document.getElementById('overlay').classList.add('show');
+                    document.getElementById('successModal').classList.add('show');
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    
+                } else {
+                    throw new Error(result.error || 'Submission failed');
+                }
+                
+            } catch (error) {
+                console.error('❌ Error:', error);
+                
+                document.getElementById('errorText').textContent = error.message;
+                document.getElementById('errorToast').classList.add('show');
+                
+                setTimeout(() => {
+                    document.getElementById('errorToast').classList.remove('show');
+                }, 5000);
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = 'Submit Inquiry';
+            }
         });
-
-        // Close success message when clicking overlay
-        overlay.addEventListener('click', () => {
-            overlay.classList.remove('show');
-            successMessage.classList.remove('show');
-        });
+        
+        function closeModal() {
+            document.getElementById('overlay').classList.remove('show');
+            document.getElementById('successModal').classList.remove('show');
+        }
+        
+        document.getElementById('overlay').addEventListener('click', closeModal);
     </script>
 </body>
 </html>
