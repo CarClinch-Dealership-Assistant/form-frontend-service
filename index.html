@@ -449,24 +449,28 @@
           <!-- 🆕 VEHICLE ID FIELD (for testing) -->
           <div class="form-group full-width">
             <label for="vehicleId"
-              >Vehicle ID <span class="required">*</span></label
+              >Vehicle <span class="required">*</span></label
             >
-            <input
-              type="text"
+            <select
               id="vehicleId"
               name="vehicleId"
               required
-              placeholder="e.g., vehicle_599cae2001"
-            />
-            <span class="error-text" id="vehicleIdError"
-              >Please enter a vehicle ID</span
+              style="
+                width: 100%;
+                padding: 1rem 1.25rem;
+                border: 2px solid #e8e6e1;
+                background: #fff;
+                font-family: &quot;Montserrat&quot;, sans-serif;
+                font-size: 0.95rem;
+                color: #0a0a0a;
+              "
             >
-            <p style="font-size: 0.75rem; color: #666; margin-top: 0.5rem">
-              💡 In production, this will be auto-populated from the vehicle
-              page
-            </p>
+              <option value="">Loading vehicles...</option>
+            </select>
+            <span class="error-text" id="vehicleIdError"
+              >Please select a vehicle</span
+            >
           </div>
-
           <div class="form-row">
             <div class="form-group">
               <label for="fname"
@@ -567,7 +571,30 @@
       // alice: nginx will proxy /api/lead to the function,
       // so we can use a relative path here
       const API_ENDPOINT = "/api/lead";
+      async function loadVehicles() {
+        const select = document.getElementById("vehicleId");
+        try {
+          const response = await fetch("/api/vehicles");
+          const result = await response.json();
 
+          select.innerHTML = '<option value="">Select a vehicle...</option>';
+
+          result.vehicles.forEach((v) => {
+            const option = document.createElement("option");
+            option.value = v.id;
+            const condition = v.status === 0 ? "New" : "Used";
+            option.textContent = `${v.year} ${v.make} ${v.model} ${v.trim || ""} (${condition}), ${parseInt(v.mileage).toLocaleString()} km`;
+            select.appendChild(option);
+          });
+        } catch (err) {
+          select.innerHTML =
+            '<option value="">Failed to load vehicles</option>';
+          console.error("Failed to load vehicles:", err);
+        }
+      }
+
+      // call on page load
+      loadVehicles();
       function validateEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
