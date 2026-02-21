@@ -1,655 +1,714 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CarClinch - Contact Dealer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* ALL YOUR EXISTING STYLES - KEEPING THEM THE SAME */
-        :root {
-            --gold: #D4AF37;
-            --gold-light: #F4E4C1;
-            --gold-dark: #B8941E;
-            --charcoal: #0A0A0A;
-            --white: #FFFFFF;
-            --cream: #FDFBF7;
-        }
+      /* ALL YOUR EXISTING STYLES - KEEPING THEM THE SAME */
+      :root {
+        --gold: #56b822;
+        --gold-light: #c4e6b3;
+        --gold-dark: #45931a;
+        --charcoal: #0a0a0a;
+        --white: #ffffff;
+        --cream: #fdfbf7;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
 
+      .container {
+        max-width: 1400px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 45% 55%;
+        background: var(--white);
+        box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+      }
+
+      .hero-section {
+        background: linear-gradient(
+          135deg,
+          rgba(10, 10, 10, 0.95) 0%,
+          rgba(26, 26, 26, 0.9) 100%
+        );
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .brand-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(
+          135deg,
+          var(--gold) 0%,
+          var(--gold-light) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+      }
+
+      .brand-tagline {
+        font-size: 0.85rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold-light);
+        margin-bottom: 3rem;
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        color: var(--white);
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-description {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .feature-list {
+        list-style: none;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .feature-icon {
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: var(--gold);
+        font-size: 0.75rem;
+      }
+
+      .form-section {
+        padding: 4rem;
+        background: var(--cream);
+        overflow-y: auto;
+        max-height: 100vh;
+      }
+
+      .form-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.25rem;
+        color: var(--charcoal);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--charcoal);
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+      }
+
+      .required {
+        color: var(--gold-dark);
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      textarea {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        border: 2px solid #e8e6e1;
+        background: var(--white);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.95rem;
+        color: var(--charcoal);
+        transition: all 0.3s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .checkbox-label {
+        font-size: 0.9rem;
+        color: var(--charcoal);
+        text-transform: none;
+        letter-spacing: normal;
+        font-weight: 400;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 1.25rem;
+        background: linear-gradient(
+          135deg,
+          var(--gold-dark) 0%,
+          var(--gold) 100%
+        );
+        color: var(--charcoal);
+        border: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .loading-spinner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--charcoal);
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin-left: 0.75rem;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error-text {
+        color: #dc2626;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+        display: none;
+      }
+
+      .error-text.show {
+        display: block;
+      }
+
+      .input-error {
+        border-color: #dc2626 !important;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.85);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+        z-index: 999;
+      }
+
+      .overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .success-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        background: var(--white);
+        padding: 4rem;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+        z-index: 1000;
+        box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+      }
+
+      .success-modal.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        pointer-events: all;
+      }
+
+      .success-icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid var(--gold);
+        border-radius: 50%;
+        margin: 0 auto 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: var(--gold);
+      }
+
+      .success-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .success-text {
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .success-details {
+        background: var(--cream);
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        text-align: left;
+        font-size: 0.85rem;
+        font-family: monospace;
+      }
+
+      .success-btn {
+        padding: 0.875rem 2rem;
+        background: var(--gold);
+        color: var(--charcoal);
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .success-btn:hover {
+        background: var(--gold-dark);
+      }
+
+      .error-toast {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background: #dc2626;
+        color: white;
+        padding: 1.25rem 2rem;
+        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
+        opacity: 0;
+        transform: translateX(400px);
+        transition: all 0.4s ease;
+        z-index: 1001;
+        max-width: 400px;
+      }
+
+      .error-toast.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      @media (max-width: 1200px) {
         .container {
-            max-width: 1400px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 45% 55%;
-            background: var(--white);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
+          grid-template-columns: 1fr;
+          max-width: 600px;
         }
+      }
 
-        .hero-section {
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.9) 100%);
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .brand-tagline {
-            font-size: 0.85rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            margin-bottom: 3rem;
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--white);
-            line-height: 1.3;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: var(--gold);
-            font-size: 0.75rem;
-        }
-
-        .form-section {
-            padding: 4rem;
-            background: var(--cream);
-            overflow-y: auto;
-            max-height: 100vh;
-        }
-
-        .form-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.25rem;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-        }
-
-        .form-subtitle {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-        }
-
+      @media (max-width: 768px) {
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+          grid-template-columns: 1fr;
         }
-
-        .form-group {
-            margin-bottom: 1.5rem;
+        .hero-section,
+        .form-section {
+          padding: 2.5rem 2rem;
         }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            display: block;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--charcoal);
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .required {
-            color: var(--gold-dark);
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            border: 2px solid #E8E6E1;
-            background: var(--white);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            transition: all 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .checkbox-label {
-            font-size: 0.9rem;
-            color: var(--charcoal);
-            text-transform: none;
-            letter-spacing: normal;
-            font-weight: 400;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1.25rem;
-            background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
-            color: var(--charcoal);
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .loading-spinner {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid var(--charcoal);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-left: 0.75rem;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .error-text {
-            color: #DC2626;
-            font-size: 0.75rem;
-            margin-top: 0.5rem;
-            display: none;
-        }
-
-        .error-text.show {
-            display: block;
-        }
-
-        .input-error {
-            border-color: #DC2626 !important;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            z-index: 999;
-        }
-
-        .overlay.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .success-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: var(--white);
-            padding: 4rem;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.5s ease;
-            z-index: 1000;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
-        }
-
-        .success-modal.show {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
-            pointer-events: all;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            border: 4px solid var(--gold);
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--gold);
-        }
-
-        .success-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-text {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .success-details {
-            background: var(--cream);
-            padding: 1rem;
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            text-align: left;
-            font-size: 0.85rem;
-            font-family: monospace;
-        }
-
-        .success-btn {
-            padding: 0.875rem 2rem;
-            background: var(--gold);
-            color: var(--charcoal);
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .success-btn:hover {
-            background: var(--gold-dark);
-        }
-
-        .error-toast {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            background: #DC2626;
-            color: white;
-            padding: 1.25rem 2rem;
-            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-            opacity: 0;
-            transform: translateX(400px);
-            transition: all 0.4s ease;
-            z-index: 1001;
-            max-width: 400px;
-        }
-
-        .error-toast.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        @media (max-width: 1200px) {
-            .container {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .hero-section,
-            .form-section {
-                padding: 2.5rem 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="hero-section">
-            <div>
-                <h1 class="brand-logo">CARCLINCH</h1>
-                <p class="brand-tagline">Elite Automotive</p>
-                
-                <h2 class="hero-title">Contact Our Dealership</h2>
-                <p class="hero-description">
-                    Get in touch about your vehicle of interest and we'll respond within 24 hours.
-                </p>
+      <div class="hero-section">
+        <div>
+          <h1 class="brand-logo">CARCLINCH</h1>
+          <p class="brand-tagline">Elite Automotive</p>
 
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Expert Automotive Consultants</span>
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Personalized Vehicle Recommendations</span>
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>24/7 Customer Support</span>
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-icon">✓</span>
-                        <span>Competitive Financing Options</span>
-                    </li>
-                </ul>
+          <h2 class="hero-title">Contact Our Dealership</h2>
+          <p class="hero-description">
+            Get in touch about your vehicle of interest and we'll respond within
+            24 hours.
+          </p>
+
+          <ul class="feature-list">
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Expert Automotive Consultants</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Personalized Vehicle Recommendations</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>24/7 Customer Support</span>
+            </li>
+            <li class="feature-item">
+              <span class="feature-icon">✓</span>
+              <span>Competitive Financing Options</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2 class="form-title">Inquire About Vehicle</h2>
+        <p class="form-subtitle">
+          Fill out the form below and we'll get back to you shortly.
+        </p>
+
+        <form id="contactForm">
+          <!-- 🆕 VEHICLE ID FIELD (for testing) -->
+          <div class="form-group full-width">
+            <label for="vehicleId"
+              >Vehicle ID <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              id="vehicleId"
+              name="vehicleId"
+              required
+              placeholder="e.g., vehicle_599cae2001"
+            />
+            <span class="error-text" id="vehicleIdError"
+              >Please enter a vehicle ID</span
+            >
+            <p style="font-size: 0.75rem; color: #666; margin-top: 0.5rem">
+              💡 In production, this will be auto-populated from the vehicle
+              page
+            </p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname"
+                >First Name <span class="required">*</span></label
+              >
+              <input type="text" id="fname" name="fname" required />
+              <span class="error-text" id="fnameError"
+                >Please enter your first name</span
+              >
             </div>
-        </div>
 
-        <div class="form-section">
-            <h2 class="form-title">Inquire About Vehicle</h2>
-            <p class="form-subtitle">Fill out the form below and we'll get back to you shortly.</p>
+            <div class="form-group">
+              <label for="lname"
+                >Last Name <span class="required">*</span></label
+              >
+              <input type="text" id="lname" name="lname" required />
+              <span class="error-text" id="lnameError"
+                >Please enter your last name</span
+              >
+            </div>
+          </div>
 
-            <form id="contactForm">
-                <!-- 🆕 VEHICLE ID FIELD (for testing) -->
-                <div class="form-group full-width">
-                    <label for="vehicleId">Vehicle ID <span class="required">*</span></label>
-                    <input 
-                        type="text" 
-                        id="vehicleId" 
-                        name="vehicleId" 
-                        required 
-                        placeholder="e.g., vehicle_599cae2001"
-                    >
-                    <span class="error-text" id="vehicleIdError">Please enter a vehicle ID</span>
-                    <p style="font-size: 0.75rem; color: #666; margin-top: 0.5rem;">
-                        💡 In production, this will be auto-populated from the vehicle page
-                    </p>
-                </div>
+          <div class="form-group">
+            <label for="email"
+              >Email Address <span class="required">*</span></label
+            >
+            <input type="email" id="email" name="email" required />
+            <span class="error-text" id="emailError"
+              >Please enter a valid email</span
+            >
+          </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fname">First Name <span class="required">*</span></label>
-                        <input type="text" id="fname" name="fname" required>
-                        <span class="error-text" id="fnameError">Please enter your first name</span>
-                    </div>
+          <div class="form-group">
+            <label for="phone"
+              >Phone Number <span class="required">*</span></label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="+1 (555) 123-4567"
+            />
+            <span class="error-text" id="phoneError"
+              >Please enter a valid phone number</span
+            >
+          </div>
 
-                    <div class="form-group">
-                        <label for="lname">Last Name <span class="required">*</span></label>
-                        <input type="text" id="lname" name="lname" required>
-                        <span class="error-text" id="lnameError">Please enter your last name</span>
-                    </div>
-                </div>
+          <div class="form-group">
+            <label for="notes">Message / Questions</label>
+            <textarea
+              id="notes"
+              name="notes"
+              placeholder="Tell us about your interest, financing needs, trade-in, or any questions..."
+            ></textarea>
+          </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" required>
-                    <span class="error-text" id="emailError">Please enter a valid email</span>
-                </div>
+          <div class="form-group">
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                id="wants_email"
+                name="wants_email"
+                checked
+              />
+              <label for="wants_email" class="checkbox-label">
+                Yes, I want to receive emails from this dealer
+              </label>
+            </div>
+          </div>
 
-                <div class="form-group">
-                    <label for="phone">Phone Number <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
-                    <span class="error-text" id="phoneError">Please enter a valid phone number</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Message / Questions</label>
-                    <textarea id="notes" name="notes" placeholder="Tell us about your interest, financing needs, trade-in, or any questions..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="wants_email" name="wants_email" checked>
-                        <label for="wants_email" class="checkbox-label">
-                            Yes, I want to receive emails from this dealer
-                        </label>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span id="btnText">Submit Inquiry</span>
-                </button>
-            </form>
-        </div>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span id="btnText">Submit Inquiry</span>
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Success Modal -->
     <div class="overlay" id="overlay"></div>
     <div class="success-modal" id="successModal">
-        <div class="success-icon">✓</div>
-        <h2 class="success-title">Inquiry Sent!</h2>
-        <p class="success-text" id="successMessage">
-            Your inquiry has been received. Our team will contact you shortly.
-        </p>
-        <div class="success-details" id="successDetails"></div>
-        <button class="success-btn" onclick="closeModal()">Close</button>
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">Inquiry Sent!</h2>
+      <p class="success-text" id="successMessage">
+        Your inquiry has been received. Our team will contact you shortly.
+      </p>
+      <div class="success-details" id="successDetails"></div>
+      <button class="success-btn" onclick="closeModal()">Close</button>
     </div>
 
     <!-- Error Toast -->
     <div class="error-toast" id="errorToast">
-        <strong>Error:</strong> <span id="errorText">Something went wrong.</span>
+      <strong>Error:</strong> <span id="errorText">Something went wrong.</span>
     </div>
 
     <script>
-        // 🔧 UPDATE THIS WITH YOUR AZURE FUNCTION URL
-        const API_ENDPOINT = 'http://localhost:7071/api/lead';
+      // 🔧 UPDATE THIS WITH YOUR AZURE FUNCTION URL
+      // alice: nginx will proxy /api/lead to the function,
+      // so we can use a relative path here
+      const API_ENDPOINT = "/api/lead";
 
-        function validateEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-        
-        function validatePhone(phone) {
-            const cleaned = phone.replace(/\D/g, '');
-            return cleaned.length >= 10;
-        }
-        
-        function showError(fieldId, message) {
-            const field = document.getElementById(fieldId);
-            const error = document.getElementById(fieldId + 'Error');
-            field.classList.add('input-error');
-            if (error) {
-                error.textContent = message;
-                error.classList.add('show');
-            }
-        }
-        
-        function clearError(fieldId) {
-            const field = document.getElementById(fieldId);
-            const error = document.getElementById(fieldId + 'Error');
-            field.classList.remove('input-error');
-            if (error) error.classList.remove('show');
-        }
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
 
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                vehicleId: document.getElementById('vehicleId').value.trim(),
-                fname: document.getElementById('fname').value.trim(),
-                lname: document.getElementById('lname').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                wants_email: document.getElementById('wants_email').checked,
-                notes: document.getElementById('notes').value.trim() || null
-            };
-            
-            // Validate
-            let isValid = true;
-            
-            if (!formData.vehicleId) {
-                showError('vehicleId', 'Vehicle ID is required');
-                isValid = false;
-            } else {
-                clearError('vehicleId');
-            }
-            
-            if (formData.fname.length < 2) {
-                showError('fname', 'First name must be at least 2 characters');
-                isValid = false;
-            } else {
-                clearError('fname');
-            }
-            
-            if (formData.lname.length < 2) {
-                showError('lname', 'Last name must be at least 2 characters');
-                isValid = false;
-            } else {
-                clearError('lname');
-            }
-            
-            if (!validateEmail(formData.email)) {
-                showError('email', 'Please enter a valid email address');
-                isValid = false;
-            } else {
-                clearError('email');
-            }
-            
-            if (!validatePhone(formData.phone)) {
-                showError('phone', 'Please enter a valid phone number');
-                isValid = false;
-            } else {
-                clearError('phone');
-            }
-            
-            if (!isValid) return;
-            
-            // Show loading
-            const btn = document.getElementById('submitBtn');
-            const btnText = document.getElementById('btnText');
-            btn.disabled = true;
-            btnText.innerHTML = 'Submitting<span class="loading-spinner"></span>';
-            
-            try {
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    console.log('✅ Success:', result);
-                    
-                    // Show success modal with details
-                    document.getElementById('successMessage').textContent = result.message;
-                    document.getElementById('successDetails').innerHTML = `
+      function validatePhone(phone) {
+        const cleaned = phone.replace(/\D/g, "");
+        return cleaned.length >= 10;
+      }
+
+      function showError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(fieldId + "Error");
+        field.classList.add("input-error");
+        if (error) {
+          error.textContent = message;
+          error.classList.add("show");
+        }
+      }
+
+      function clearError(fieldId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(fieldId + "Error");
+        field.classList.remove("input-error");
+        if (error) error.classList.remove("show");
+      }
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          // Get form data
+          const formData = {
+            vehicleId: document.getElementById("vehicleId").value.trim(),
+            fname: document.getElementById("fname").value.trim(),
+            lname: document.getElementById("lname").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            wants_email: document.getElementById("wants_email").checked,
+            notes: document.getElementById("notes").value.trim() || null,
+          };
+
+          // Validate
+          let isValid = true;
+
+          if (!formData.vehicleId) {
+            showError("vehicleId", "Vehicle ID is required");
+            isValid = false;
+          } else {
+            clearError("vehicleId");
+          }
+
+          if (formData.fname.length < 2) {
+            showError("fname", "First name must be at least 2 characters");
+            isValid = false;
+          } else {
+            clearError("fname");
+          }
+
+          if (formData.lname.length < 2) {
+            showError("lname", "Last name must be at least 2 characters");
+            isValid = false;
+          } else {
+            clearError("lname");
+          }
+
+          if (!validateEmail(formData.email)) {
+            showError("email", "Please enter a valid email address");
+            isValid = false;
+          } else {
+            clearError("email");
+          }
+
+          if (!validatePhone(formData.phone)) {
+            showError("phone", "Please enter a valid phone number");
+            isValid = false;
+          } else {
+            clearError("phone");
+          }
+
+          if (!isValid) return;
+
+          // Show loading
+          const btn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          btn.disabled = true;
+          btnText.innerHTML = 'Submitting<span class="loading-spinner"></span>';
+
+          try {
+            const response = await fetch(API_ENDPOINT, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              console.log("✅ Success:", result);
+
+              // Show success modal with details
+              document.getElementById("successMessage").textContent =
+                result.message;
+              document.getElementById("successDetails").innerHTML = `
                         <strong>Lead ID:</strong> ${result.data.lead.id}<br>
                         <strong>Conversation ID:</strong> ${result.data.conversationId}<br>
                         <strong>Vehicle:</strong> ${result.data.vehicle.year} ${result.data.vehicle.make} ${result.data.vehicle.model}<br>
                         <strong>Dealership:</strong> ${result.data.dealership.name}
                     `;
-                    
-                    document.getElementById('overlay').classList.add('show');
-                    document.getElementById('successModal').classList.add('show');
-                    
-                    // Reset form
-                    document.getElementById('contactForm').reset();
-                    
-                } else {
-                    throw new Error(result.error || 'Submission failed');
-                }
-                
-            } catch (error) {
-                console.error('❌ Error:', error);
-                
-                document.getElementById('errorText').textContent = error.message;
-                document.getElementById('errorToast').classList.add('show');
-                
-                setTimeout(() => {
-                    document.getElementById('errorToast').classList.remove('show');
-                }, 5000);
-            } finally {
-                btn.disabled = false;
-                btnText.textContent = 'Submit Inquiry';
+
+              document.getElementById("overlay").classList.add("show");
+              document.getElementById("successModal").classList.add("show");
+
+              // Reset form
+              document.getElementById("contactForm").reset();
+            } else {
+              throw new Error(result.error || "Submission failed");
             }
+          } catch (error) {
+            console.error("❌ Error:", error);
+
+            document.getElementById("errorText").textContent = error.message;
+            document.getElementById("errorToast").classList.add("show");
+
+            setTimeout(() => {
+              document.getElementById("errorToast").classList.remove("show");
+            }, 5000);
+          } finally {
+            btn.disabled = false;
+            btnText.textContent = "Submit Inquiry";
+          }
         });
-        
-        function closeModal() {
-            document.getElementById('overlay').classList.remove('show');
-            document.getElementById('successModal').classList.remove('show');
-        }
-        
-        document.getElementById('overlay').addEventListener('click', closeModal);
+
+      function closeModal() {
+        document.getElementById("overlay").classList.remove("show");
+        document.getElementById("successModal").classList.remove("show");
+      }
+
+      document.getElementById("overlay").addEventListener("click", closeModal);
     </script>
-</body>
+  </body>
 </html>

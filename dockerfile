@@ -5,6 +5,10 @@ FROM nginx:alpine
 # Nginx looks for 'index.html' in this specific folder by default
 COPY index.html /usr/share/nginx/html/index.html
 
+# this nginx.conf file will be used to configure nginx to serve the html file
+# w/o needing to hardcode the endpoint in the index.html file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Expose port 80 to the outside world
 EXPOSE 80
 
