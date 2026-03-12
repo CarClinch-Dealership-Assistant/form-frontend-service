@@ -2,7 +2,8 @@
 FROM nginx:alpine
 
 # Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# replace your existing COPY for nginx.conf with:
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 # Copy all site static files into Nginx html directory
 COPY . /usr/share/nginx/html/
