@@ -1,16 +1,9 @@
-/*
-For Testing Locally modify API_BASE:
-Assuming Azure Function is running on http://localhost:7071/
-const API_BASE = "http://localhost:7071/api";
-*/
-// alice: nginx will proxy /api/lead to the function,
-// so we can use a relative path here
-const API_BASE = "/api/";
+const API_BASE = window.ENV?.BACKEND_URL ?? "http://localhost:7071/api";
 const API_ENDPOINT = `${API_BASE}/lead`;
 
 async function loadVehicles() {
     const select = document.getElementById("vehicleId");
-    if (!select) return; 
+    if (!select) return;
 
     try {
         const response = await fetch(`${API_BASE}/vehicles`);
@@ -31,7 +24,6 @@ async function loadVehicles() {
     }
 }
 
-// call on page load
 loadVehicles();
 
 function validateEmail(email) {
@@ -60,13 +52,11 @@ function clearError(fieldId) {
     if (error) error.classList.remove("show");
 }
 
-
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Get form data
         const formData = {
             vehicleId: document.getElementById("vehicleId").value.trim(),
             fname: document.getElementById("fname").value.trim(),
@@ -76,7 +66,6 @@ if (contactForm) {
             notes: document.getElementById("notes").value.trim() || null,
         };
 
-        // validate
         let isValid = true;
         if (!formData.vehicleId) { showError("vehicleId", "Vehicle ID is required"); isValid = false; } else { clearError("vehicleId"); }
         if (formData.fname.length < 2) { showError("fname", "First name must be at least 2 characters"); isValid = false; } else { clearError("fname"); }
@@ -88,7 +77,7 @@ if (contactForm) {
 
         const btn = document.getElementById("submitBtn");
         const btnText = document.getElementById("btnText");
-        
+
         if (btn && btnText) {
             btn.disabled = true;
             btnText.innerHTML = 'Submitting<span class="loading-spinner"></span>';
@@ -144,7 +133,6 @@ if (overlay) {
     overlay.addEventListener("click", closeModal);
 }
 
-// Exports needed for jest testing
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { validateEmail, validatePhone, loadVehicles, closeModal };
 }

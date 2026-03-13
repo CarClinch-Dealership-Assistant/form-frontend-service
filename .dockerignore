@@ -12,3 +12,5 @@ docs
 *.env
 npm-debug.log
 yarn-error.log
+Dockerfile
+.dockerignore
