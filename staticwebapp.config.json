@@ -3,7 +3,7 @@
     {
       "route": "/api/*",
       "redirect": "https://carclinch-backend-dev.azurewebsites.net/api/*",
-      "statusCode": 308
+      "statusCode": 301
     }
   ],
   "navigationFallback": {
