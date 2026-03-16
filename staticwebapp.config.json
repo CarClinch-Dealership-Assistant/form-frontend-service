@@ -2,10 +2,10 @@
   "routes": [
     {
       "route": "/api/*",
-      "rewrite": "/api/*"
+      "rewrite": "https://carclinch-backend-dev.azurewebsites.net/api/*"
     }
   ],
-  "platform": {
-    "apiRuntime": "node:18"
+  "navigationFallback": {
+    "rewrite": "/index.html"
   }
 }
