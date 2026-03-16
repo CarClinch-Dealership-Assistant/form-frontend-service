@@ -20,6 +20,9 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Generate env.js
+        run: |
+          echo "window.ENV = { BACKEND_URL: '${{ secrets.BACKEND_URL }}' };" > env.js
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
