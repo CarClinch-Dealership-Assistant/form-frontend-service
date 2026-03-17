@@ -1,4 +1,4 @@
-const API_BASE = window.ENV?.BACKEND_URL ?? "http://localhost:7071/api";
+const API_BASE = window.ENV?.BACKEND_URL || "/api";
 const API_ENDPOINT = `${API_BASE}/lead`;
 
 async function loadVehicles() {
